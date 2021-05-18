@@ -21,6 +21,10 @@ export default {
           },
         },
       },
+      {
+        test: /\.\/plotly.js\/\.js$/,
+        loader: 'ify-loader'
+      },
     ],
   },
 
