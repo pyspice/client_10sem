@@ -9,10 +9,11 @@ body {
   position: relative;
   height: 100vh;
   font-family: sans-serif;
-  overflow-y: hidden;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 500px;
 }
 
 #root {

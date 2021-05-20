@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { FiInfo } from 'react-icons/fi';
+import Alert from 'react-bootstrap/Alert';
+import { FiInfo, FiActivity } from 'react-icons/fi';
 import { debounce } from 'lodash';
 import { Plot, PlotProps, Upload } from '../components';
 import { query } from '../utils';
@@ -53,7 +54,7 @@ const Info = () => (
   <OverlayTrigger trigger="click" placement="left" overlay={popover}>
     {({ ref, ...props }) => (
       <div className="d-flex flex-row justify-content-center">
-        <div className="me-1">Загрузите файл с данными</div>
+        <div className="me-1">Загрузите данные</div>
         <div ref={ref} {...props} style={{ cursor: 'pointer' }}>
           <FiInfo />
         </div>
@@ -84,14 +85,22 @@ export function Main() {
   return (
     <Container className="px-0 mx-0 mw-100 w-100 h-100">
       <Row className="w-100 h-100 px-0 mx-0">
-        <Col className="h-100 px-0">
+        <Col className="h-100 px-0 d-flex align-items-center justify-content-center">
           {plotProps !== undefined ? (
             <Plot {...plotProps} />
+          ) : error ? (
+            <Alert variant="danger" onClose={() => setError('')} dismissible closeLabel="">
+              <Alert.Heading>Ошибка</Alert.Heading>
+              <p>{error}</p>
+            </Alert>
           ) : (
-            <div className="text-danger">{error || 'Empty placeholder'}</div>
+            <Alert className="d-flex flex-column align-items-center" variant="secondary">
+              Загрузите данные
+              <FiActivity className="h-50 w-50" />
+            </Alert>
           )}
         </Col>
-        <Col className="right-panel">
+        <Col className="right-panel bg-gradient-secondary">
           <Upload label={<Info />} onChange={onUpload} />
         </Col>
       </Row>
