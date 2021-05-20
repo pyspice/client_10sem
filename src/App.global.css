@@ -1,5 +1,6 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "./pages/Main.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import './pages/Main.css';
+@import './components/Plot/Plot.css';
 
 /*
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules

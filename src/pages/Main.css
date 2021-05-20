@@ -1,6 +1,9 @@
 .right-panel {
   min-width: 300px;
   max-width: 300px;
+  height: calc(100% - 8px);
+  margin-top: 2px;
+  box-shadow: rgba(0, 0, 0, 0.15) -1.95px 0px 3px;
 }
 
 .alert-dismissible .close {
